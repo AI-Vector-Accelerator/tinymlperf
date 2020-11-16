@@ -1,5 +1,20 @@
+# Overwritten with the call to make
+# Used to select a makefile.inc file from the bsp directory
+# Defaults to x86 for hosted testing
+TARGET_ARCH = x86
+
+# Defined in makefile.inc files in the bsp dir
+# Passed to the ./example_submission/download_and_build_tfmicro script.
+# Used as arguments for the TFLite makefile. Selects the correct port
+# of TF Lite for Micros.
+TFMICRO_MAKE_FLAGS := 
+
 TARGET_TOOLCHAIN_ROOT := 
 TARGET_TOOLCHAIN_PREFIX := 
+
+# Include all makefile.inc from bsp
+# Read the README in the bsp directory for info on how the correct one is selected
+include $(wildcard bsp/*/makefile.inc)
 
 # These are microcontroller-specific rules for converting the ELF output
 # of the linker into a binary image that can be loaded directly.
@@ -55,6 +70,9 @@ download_deps:
 clean:
 	-$(RM) $(OBJS)
 	-$(RM) vww_perf_runner
+	-$(RM) ./example_submission/libtensorflow-microlite.a
+	-$(RM) -r ./example_submission/tensorflow/lite/micro/tools/make/gen
+	
 
 clean_downloads:
 	$(RM) -r $(DOWNLOADS)
