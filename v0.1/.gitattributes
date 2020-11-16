@@ -1,0 +1,2 @@
+bsp/**.a filter=lfs diff=lfs merge=lfs -text
+bsp/**.o filter=lfs diff=lfs merge=lfs -text
