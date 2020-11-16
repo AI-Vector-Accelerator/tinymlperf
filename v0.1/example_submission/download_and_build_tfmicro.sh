@@ -8,6 +8,6 @@ if [ ! -f "$TFMICRO_BINARY" ]; then
     rm -rf tensorflow-master*
   fi
   make -f tensorflow/lite/micro/tools/make/Makefile third_party_downloads
-  make -f tensorflow/lite/micro/tools/make/Makefile microlite -j18
+  make -f tensorflow/lite/micro/tools/make/Makefile microlite $1 -j18
   mv tensorflow/lite/micro/tools/make/gen/*/lib/libtensorflow-microlite.a .
 fi
