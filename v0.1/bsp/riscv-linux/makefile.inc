@@ -1,4 +1,4 @@
-ifeq ($(TARGET_ARCH), cv32e40p)
+ifeq ($(TARGET_ARCH), riscv-linux)
     BSP_DIR = ./bsp/cv32e40p/
 
     TARGET_TOOLCHAIN_PREFIX = riscv32-unknown-elf-
