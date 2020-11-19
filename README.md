@@ -14,3 +14,11 @@ TinyMLPerf is primarily intended to benchmark hardware rather than new network
 archietctures, or embedded neural net runtimes. The reference benchmarks are provided using
 TensorFlow Lite for Microcontrollers (TFLM). Submitters can directly use the TFLM, although 
 submitters are encouraged to use the software stack that works best on thier hardware.
+
+To make:
+`sudo apt get install unzip
+
+cd v0.1
+make TARGET_ARCH=cv32e40p
+`
+
