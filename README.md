@@ -18,5 +18,6 @@ submitters are encouraged to use the software stack that works best on thier har
 To make:
 `sudo apt-get install unzip` 
 `cd v0.1`
-`make TARGET_ARCH=cv32e40p`
+`make clean`
+`make TARGET_ARCH=cv32e40p or make TARGET_ARCH=riscv-linux`
 
