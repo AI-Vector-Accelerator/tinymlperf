@@ -25,4 +25,7 @@ verilator
 `riscv32-unknown-elf-objcopy -O verilog  vww_perf_runner output.hex`
 `testbench_verilator "+firmware=output.hex"`
 
+spike
+`spike  --isa=RV32IMCV     /opt/riscv/riscv32-unknown-elf/bin/pk vww_perf_runner`
+
 
