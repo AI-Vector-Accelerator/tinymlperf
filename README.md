@@ -22,10 +22,14 @@ To make:
 `make TARGET_ARCH=cv32e40p or make TARGET_ARCH=riscv-linux`
 
 verilator 
+`make clean`
+`make TARGET_ARCH=cv32e40p` 
 `riscv32-unknown-elf-objcopy -O verilog  vww_perf_runner output.hex`
 `testbench_verilator "+firmware=output.hex"`
 
 spike
+`make clean`
+`make TARGET_ARCH=riscv-linux`
 `spike  --isa=RV32IMCV     /opt/riscv/riscv32-unknown-elf/bin/pk vww_perf_runner`
 
 
