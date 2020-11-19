@@ -21,3 +21,8 @@ To make:
 `make clean`
 `make TARGET_ARCH=cv32e40p or make TARGET_ARCH=riscv-linux`
 
+verilator 
+`riscv32-unknown-elf-objcopy -O verilog  vww_perf_runner output.hex`
+`testbench_verilator "+firmware=output.hex"`
+
+
