@@ -21,7 +21,6 @@ int main() {
   constexpr int kMaxOutputSize = 10;
   float output_buffer[kMaxOutputSize];
   mlperf::tiny::Initialize();
-
   int index = 0;
   while (mlperf::tiny::SetInput(index++) !=
          mlperf::tiny::kTinyMlPerfInputDone) {
@@ -31,9 +30,17 @@ int main() {
     int64_t duration_ticks = end - start;
     int64_t duration_usec =
         duration_ticks * kUsecPerSecond / mlperf::tiny::TicksPerSecond();
+
+#ifdef CV32E40P
+    mlperf::tiny::LogToHost(
+        "invocation %d took %d cycles\n", index,
+        duration_ticks, duration_usec);
+#else
     mlperf::tiny::LogToHost(
         "invocation %d took %lld cycles %lld microseconds\n", index,
         duration_ticks, duration_usec);
+#endif // CV32E40P
+
     int len = mlperf::tiny::GetOutput(output_buffer);
     mlperf::tiny::LogToHost("Model output: [");
     for (int i = 0; i < len; i++) {

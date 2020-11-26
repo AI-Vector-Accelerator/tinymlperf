@@ -10,7 +10,8 @@ ifeq ($(TARGET_ARCH), cv32e40p)
         -mabi=ilp32 \
         -march=rv32imc \
         -Wall \
-        -pedantic
+        -pedantic \
+        -DCV32E40P
 
     CCFLAGS += CXXFLAGS
 

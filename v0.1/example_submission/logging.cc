@@ -17,9 +17,23 @@ limitations under the License.
 
 #include <stdarg.h>
 #include <stdio.h>
+#include <iostream>
 
 namespace mlperf {
 namespace tiny {
+
+#ifdef CV32E40P
+void LogToHost(const char* format, ...) {
+  va_list args;
+  char out_str[256] = "\0"; 
+  va_start(args, format);
+  vsprintf(out_str, format, args);
+  va_end(args);
+
+  std::cout << out_str << std::endl;
+}
+
+#else
 
 void LogToHost(const char* format, ...) {
   va_list args;
@@ -27,6 +41,8 @@ void LogToHost(const char* format, ...) {
   vprintf(format, args);
   va_end(args);
 }
+
+#endif // CV32E40P
 
 }  // namespace tiny
 }  // namespace mlperf
