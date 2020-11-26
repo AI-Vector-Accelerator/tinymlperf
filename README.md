@@ -68,5 +68,6 @@ These instructions allow a user to specify the version of TensorFlow on which Ti
 This can be on any branch, not just master.
 2. Open the file `v0.1/example_submission/download_and_build_tfmicro.sh`
 3. Replace the value of the variable TF_COMMIT_SHA with the hash/sha you found in step 1.
-4. run `make clean` from within the dir `./v0.1` and delete the directory `v0.1/example_submission/tensorflow`
+4. run `make clean` from within the dir `./v0.1` and delete the directory `v0.1/example_submission/tensorflow`  
+This will ensure the new version of TensorFlow will be downloaded when the next make command is run.
 
