@@ -14,6 +14,12 @@ ifeq ($(TARGET_ARCH), cv32e40p)
 
     CCFLAGS += CXXFLAGS
 
+    ifneq (,$(findstring spike,$(TAGS)))
+    LDFLAGS += \
+        --specs=nano.specs -u _printf_float \
+
+    TFMICRO_MAKE_FLAGS := "TARGET=mcu_riscv TARGET_ARCH=cv32e40p TAGS="spike""
+	else
     LDFLAGS += \
         -static \
         -nostartfiles \
@@ -24,5 +30,6 @@ ifeq ($(TARGET_ARCH), cv32e40p)
         -T ${BSP_DIR}link.ld
 
     TFMICRO_MAKE_FLAGS := "TARGET=mcu_riscv TARGET_ARCH=cv32e40p"
+	endif
 
 endif
