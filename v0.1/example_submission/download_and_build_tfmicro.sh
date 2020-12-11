@@ -1,7 +1,7 @@
 
 # Use this variable to set which commit of TensorFlow you would like to test.
 # This commit can be from any active branch.
-TF_COMMIT_SHA=d1b8c560c04d7e9e507dfc1dfe2faa648ac42878
+TF_COMMIT_SHA=2f900c7ba883afeca5ee000be724cbd0e5252be5
 
 cd $(dirname $0)
 TFMICRO_BINARY=libtensorflow-microlite.a
