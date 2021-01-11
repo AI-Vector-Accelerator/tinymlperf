@@ -22,7 +22,19 @@ namespace tiny {
 
 int32_t TicksPerSecond() { return CLOCKS_PER_SEC; }
 
+
+#ifdef CV32E40P
+unsigned long getCycles(void){
+	unsigned long numberOfCyclesExecuted;
+	asm volatile ("rdcycle %0" : "=r"(numberOfCyclesExecuted));
+	return numberOfCyclesExecuted;
+}
+
+int32_t CurrentTimeTicks() { return static_cast<int32_t>(getCycles()); }
+
+#else 
 int32_t CurrentTimeTicks() { return static_cast<int32_t>(clock()); }
+#endif
 
 }  // namespace tiny
 }  // namespace mlperf
