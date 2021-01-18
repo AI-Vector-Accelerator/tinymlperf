@@ -9,9 +9,9 @@ TFMICRO_BINARY=libtensorflow-microlite.a
 if [ ! -f "$TFMICRO_BINARY" ]; then
   if [ ! -d "tensorflow" ]; then
     if [ ! -z "$TF_COMMIT_SHA" ]; then
-      curl --header "PRIVATE-TOKEN: Hb7KDihnd9UsPy3Vfymk" "https://git.soton.ac.uk/api/v4/projects/3745/repository/archive.zip?sha=$TF_COMMIT_SHA" --output ./tensorflow.zip
+      wget https://github.com/AI-Vector-Accelerator/tensorflow/archive/${TF_COMMIT_SHA}.zip -O ./tensorflow.zip
     else
-      curl --header "PRIVATE-TOKEN: Hb7KDihnd9UsPy3Vfymk" "https://git.soton.ac.uk/api/v4/projects/3745/repository/archive.zip" --output ./tensorflow.zip
+      wget https://github.com/AI-Vector-Accelerator/tensorflow/archive/master.zip -O ./tensorflow.zip
     fi
     unzip tensorflow.zip
     mv -f tensorflow-*/tensorflow .
